@@ -52,7 +52,7 @@ case $1 in
 		wal -i ~/wallpapers/unsplash/color-palette/mike-dennler-173199-unsplash.jpg --backend colorz
 		;;
 	beijing)
-		wal -i ~/wallpapers/camera/IMG_3631.JPG --backend colorz
+		wal -i ~/wallpapers/camera/IMG_3675.JPG --backend colorz
 		;;
 	orangebeijing)
 		wal -i ~/wallpapers/camera/IMG_3633.JPG
@@ -72,5 +72,6 @@ case $1 in
 		;;
 	*)
 		echo "choose a vaild theme"
+		cat ~/bashscripts/chtheme.sh
 		;;
 esac
