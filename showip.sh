@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "ip: $(ifconfig | grep "inet " | tail -n 1 | awk '{print $2}')"
+echo "$(ifconfig | grep -w inet | head -n 1 | awk '{print $2}')"
