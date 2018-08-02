@@ -6,7 +6,7 @@ for ws in $args
 do
 	file=${ws}tmp.png
 	i3-msg workspace $ws
-	sleep 0.2
+	sleep 0.1
 	scrot /tmp/i3screenshot/$file
 done
 
