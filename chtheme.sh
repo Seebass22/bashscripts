@@ -11,12 +11,12 @@ case $1 in
 		wal --theme base16-summerfruit
 		;;
 	solid)
-		sed -i 's/^URxvt.transparent: true/!URxvt.transparent: true/' ~/.Xdefaults
-		sed -i 's/^!URxvt.transparent: false/URxvt.transparent: false/' ~/.Xdefaults
+		sed -i --follow-symlinks 's/^URxvt.transparent: true/!URxvt.transparent: true/' ~/.Xdefaults
+		sed -i --follow-symlinks 's/^!URxvt.transparent: false/URxvt.transparent: false/' ~/.Xdefaults
 		;;
 	trans|transparent)
-		sed -i 's/^URxvt.transparent: false/!URxvt.transparent: false/' ~/.Xdefaults
-		sed -i 's/^!URxvt.transparent: true/URxvt.transparent: true/' ~/.Xdefaults
+		sed -i --follow-symlinks 's/^URxvt.transparent: false/!URxvt.transparent: false/' ~/.Xdefaults
+		sed -i --follow-symlinks 's/^!URxvt.transparent: true/URxvt.transparent: true/' ~/.Xdefaults
 		;;
 	green)
 		wal -i ~/wallpapers/unsplash/leaf/josh-calabrese-253693-unsplash.jpg --backend colorz
@@ -25,8 +25,8 @@ case $1 in
 		wal -i ~/wallpapers/8bit/pixelred.png
 		;;
 	win)
-		sed -i 's/^URxvt.transparent: true/!URxvt.transparent: true/' ~/.Xdefaults
-		sed -i 's/^!URxvt.transparent: false/URxvt.transparent: false/' ~/.Xdefaults
+		sed -i --follow-symlinks 's/^URxvt.transparent: true/!URxvt.transparent: true/' ~/.Xdefaults
+		sed -i --follow-symlinks 's/^!URxvt.transparent: false/URxvt.transparent: false/' ~/.Xdefaults
 		feh --bg-scale ~/wallpapers/New/win95.jpg
 		wal --theme base16-flat
 		;;
