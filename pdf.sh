@@ -1,6 +1,8 @@
 #!/bin/bash
-if ls | grep pdf > /dev/null ; then
+if ls | grep -E '\.pdf$' > /dev/null ; then
 	pdf=$(ls *.pdf | dmenu -i -p "which PDF do you want to select?")
+else
+	echo "no PDFs found" && exit 1
 fi
-[ -z "$pdf" ] && echo "no PDFs found" && exit 1
+[ -z "$pdf" ] && exit 1
 zathura "$pdf" & disown
