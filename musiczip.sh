@@ -14,4 +14,5 @@ for f in "$@" ; do
 	mv "$file" ../
 	cd ..
 	mv "$newdir" music/
+	mv $file ~/.trash/
 done
