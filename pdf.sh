@@ -1,6 +1,6 @@
 #!/bin/bash
 if ls | grep -E '\.pdf$' > /dev/null ; then
-	pdf=$(ls *.pdf | dmenu -i -p "which PDF do you want to select?")
+	pdf=$(ls *.pdf | dmenu -l 25 -i -p "which PDF do you want to select?")
 else
 	echo "no PDFs found" && exit 1
 fi
