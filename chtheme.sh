@@ -36,6 +36,9 @@ case $1 in
 	nature)
 		wal -i ~/wallpapers/8bit/greennature.png --backend colorz
 		;;
+	elementary)
+		wal -i ~/wallpapers/elementary/Pablo\ Garcia\ Saldana.jpg --backend colorz
+		;;
 	grey)
 		feh --bg-scale ~/wallpapers/8bit/greyforest.png
 		;;
