@@ -5,4 +5,4 @@ else
 	echo "no PDFs found" && exit 1
 fi
 [ -z "$pdf" ] && exit 1
-zathura "$pdf" --fork
+zathura "$pdf" --fork > /dev/null 2>&1
