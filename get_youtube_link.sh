@@ -1,5 +1,4 @@
 #!/bin/bash
-title='sdf'
 getlink(){
 	id=$(youtube-dl --get-id "ytsearch:${search}")
 	link="https://youtu.be/${id}"
