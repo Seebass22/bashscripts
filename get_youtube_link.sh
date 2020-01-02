@@ -1,4 +1,16 @@
 #!/bin/bash
+title='sdf'
+getlink(){
+	id=$(youtube-dl --get-id "ytsearch:${search}")
+	link="https://youtu.be/${id}"
+	printf "%16s${link}\n" "link: "
+}
+
+gettitle(){
+	title="$(youtube-dl --get-title "ytsearch:${search}")"
+	printf "%16s${title}\n" "yt video title: "
+}
+
 mpdstatus="$(mpc status | sed -n '2p' | awk '{print $1}')"
 
 ps aux | grep -q "[s]potify"
@@ -14,10 +26,7 @@ elif [ $? -eq 1 ]; then
 	search="$(mpc status | head -n1)"
 fi
 
-printf "%16s${search}\n" "song title: "
-printf "%16s" "yt video title: "
-
-youtube-dl --get-title "ytsearch:${search}"
-id=$(youtube-dl --get-id "ytsearch:${search}")
-link="https://youtu.be/${id}"
-printf "%16s${link}\n" "link: "
+printf "%16s${search}\n\n" "song title: "
+gettitle &
+getlink &
+wait
