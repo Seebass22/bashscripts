@@ -15,8 +15,8 @@ elif [ $? -eq 1 ]; then
 	title="$(mpc status | head -n1 | cut -d'-' -f2)"
 fi
 
-artistp="$(echo $artist | sed 's/ /+/g')"
-titlep="$(echo $title | sed 's/ /+/g')"
+artistp="$(echo $artist | sed -e 's/ /+/g' -e 's/&//g')"
+titlep="$(echo $title | sed -e 's/ /+/g' -e 's/&//g')"
 
 echo "$artist - $title"
 link="https://tunebat.com/Search?q=${artistp}+${titlep}"
