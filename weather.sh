@@ -16,7 +16,7 @@ if [ $update -eq 1 ] ; then
 fi
 
 
-if [ $1 = "temp" ] || [ $2 = "temp" ]; then
+if [ "$1" = "temp" ] || [ "$2" = "temp" ]; then
 	echo "$city: $(cat /tmp/weather${city} | grep ° | head -n 1 | awk '{print $(NF - 1) $NF}' | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g")"
 else
 	cat /tmp/weather${city}
