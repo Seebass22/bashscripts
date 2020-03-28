@@ -11,8 +11,8 @@ if [ $? -eq 0 ]; then
 		artist="$(dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n '/artist/{n;n;p}' | cut -d '"' -f 2)"
 	fi
 elif [ $? -eq 1 ]; then
-	artist="$(mpc status | head -n1 | cut -d'-' -f1)"
-	title="$(mpc status | head -n1 | cut -d'-' -f2)"
+	artist="$(mpc status -f %artist% | head -n1)"
+	title="$(mpc status -f %title% | head -n1)"
 fi
 
 artistp="$(echo $artist | sed -e 's/ /+/g' -e 's/&//g')"
