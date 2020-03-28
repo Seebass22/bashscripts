@@ -1,4 +1,5 @@
 #!/bin/bash
+# get key of currently playing song (MPD/spotify)
 mpdstatus="$(mpc status | sed -n '2p' | awk '{print $1}')"
 
 ps aux | grep -q "[s]potify"

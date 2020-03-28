@@ -1,4 +1,5 @@
 #!/bin/bash
+# unzip dirs, move to music dir
 if [ $# -lt 1 ]; then
 	echo "error"
 	exit -1

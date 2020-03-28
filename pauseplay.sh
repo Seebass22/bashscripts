@@ -1,4 +1,6 @@
 #!/bin/bash
+# toggle pause/play spotify/MPD
+# priority: spotify > MPD
 mpdstatus="$(mpc status | sed -n '2p' | awk '{print $1}')"
 
 ps aux | grep -q "[s]potify"

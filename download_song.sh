@@ -1,4 +1,5 @@
 #!/bin/bash
+# download current MPD or spotifu song from youtube as audio
 mpdstatus="$(mpc status | sed -n '2p' | awk '{print $1}')"
 
 ps aux | grep -q "[s]potify"

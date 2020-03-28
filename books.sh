@@ -1,4 +1,5 @@
 #!/bin/bash
+# opens books in ~/Documents/books/ with zathura or calibre
 openbook () {
 	if [[ $book =~ .*\.epub ]]; then
 		ebook-viewer "$book" & disown

@@ -1,4 +1,8 @@
 #!/bin/bash
+# format tables horizontal -> vertical
+# input: clipboard
+# output: STDOUT
+
 first="$(xclip -selection c -o | head -n1)"
 second="$(xclip -selection c -o | tail -n1)"
 

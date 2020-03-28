@@ -1,14 +1,15 @@
 #!/bin/bash
+# convert recipes from reddit to LaTeX
 outfile=output.tex
+dir=""
 
 if [ $# -eq 1 ]; then
-	infile="$1"
-	del_in=0
-	echo "converting $1"
+	xclip -out > infile
+	infile=infile
+	dir="$1"
 else
 	xclip -out > infile
 	infile=infile
-	del_in=1
 	echo "reading from xclip:"
 fi
 head -n1 "$infile"
@@ -19,14 +20,27 @@ cat << EOF > $outfile
 \usepackage[utf8]{inputenc}
 \usepackage{xeCJK}
 \usepackage{hyperref}
+
+\newcommand{\point}[1]{
+	\begin{itemize}
+		\item{#1}
+	\end{itemize}
+}
+
 EOF
 echo "\title{$title}" >> $outfile
 echo '\date{\vspace{-5ex}}' >> $outfile
-echo -e '\n\\begin{document}' >> $outfile
+echo -e '\n\\begin{document}\n\\maketitle' >> $outfile
 
-sed -E -e 's/…/\\{ldots}/g' -e "s/’/'/g" -e 's/%/\\%/g' -e 's|^\ \ \ \ (.+)$|\\item{\1}|' -e 's/^([A-Z].*):$/\\section{\1}/'  "$infile" >> $outfile
+sed -E -e 's/…/{\\ldots}/g' -e "s/’/'/g" -e 's/#/\\#/g' -e 's/%/\\%/g' -e 's|^\ \ \ \ (.+)$|\\point{\1}|' -e 's/^([A-Z].*):$/\\section{\1}/' -e 's/&/\\&/' "$infile" >> $outfile
 echo -e '\n\\end{document}' >> $outfile
 sed -i '/^$/d' $outfile
-[ $del_in -eq 1 ] && rm -f infile
+rm -f infile
 
 echo "output file: $outfile"
+
+if [ -n "$dir" ]; then
+mkdir $dir
+mv output.tex ${dir}/${dir}.tex
+sed "s/filename/${dir}/g" Makefile > ${dir}/Makefile
+fi
