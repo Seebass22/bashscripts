@@ -1,5 +1,6 @@
 #!/bin/bash
 # format tables horizontal -> vertical
+# for use in pgfplot
 # input: clipboard
 # output: STDOUT
 
