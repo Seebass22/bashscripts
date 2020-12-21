@@ -11,21 +11,26 @@
 ê e circumflex
 ÷ division
 € euro
+£ british pound sign gbp
 ° degree
 ‰ promille
 ± plus-minus
+¹ superscript one
 ² superscript two
 ³ superscript three
 ⁿ superscript n
 ⁼ superscript equals
 ⁽ superscript left bracket
 ⁾ superscript right bracket
+⁻ superscript minus
+⊕ circled plus xor
 ½ half
 ¼ quarter
 ¾ three quarters
 ¶ pilcrow
 § section sign / paragraph mark
 Σ capital sigma
+σ sigma
 α alpha
 β beta
 γ gamma
@@ -39,6 +44,7 @@
 ξ xi
 π pi
 φ phi
+τ tau
 ℃ deg celsius
 ™ trademark
 ⅀ summation
@@ -60,11 +66,14 @@
 ℤ integer
 ☭ hammer and sickle
 ↄ backwards c
+Ɑ backwards capital D
 η small eta
 ≡ congruent
 ∈ element
+‫ unicode right to left modifier
 ​ zero width space
   hair space
   thin space
   three-per-em space
   figure space
+♭ flat sign

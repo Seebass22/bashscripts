@@ -6,7 +6,7 @@
 # xclip -h >/dev/null || exit
 
 if [ -f ~/.emails ]; then
-	chosen=$(cat ~/bashscripts/.specialchars ~/.emails | grep -v "#" |  dmenu -l 20 -fn Monospace-18)
+	chosen=$(cat ~/bashscripts/.specialchars ~/.emails ~/bashscripts/.emojis | grep -v "#" |  dmenu -l 30 -fn Monospace-18)
 else
 	chosen=$(grep -v "#" ~/bashscripts/.specialchars | dmenu -l 20 -fn Monospace-18)
 fi
