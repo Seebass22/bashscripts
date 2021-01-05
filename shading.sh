@@ -1,4 +1,6 @@
 #!/bin/bash
+# set URxvt transparency via Xdefaults
+
 if [ $# -ne 1 ]
 then
 	cat ~/.Xdefaults | grep shading
