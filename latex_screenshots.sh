@@ -5,7 +5,7 @@
 outputdir=summary_output
 
 compile(){
-	latexmk -pdf ausarbeitung.tex
+	latexmk -pdf "$1"
 }
 
 # create pdf with multiple pages per pdf page
@@ -15,19 +15,24 @@ sumarize(){
 }
 
 convert_to_png(){
-	convert -background white -alpha remove -alpha off -density 150 "$1" ${1%.pdf}.png
+	convert -background white -alpha remove -alpha off -density 300 "$1" ${1%.pdf}.png
 }
 
 i=1
 mkdir -p "$outputdir"
+if [ $# -eq 1 ]; then
+	input="$1"
+else
+	input="$(echo *.tex)"
+fi
 
 while true; do
-	compile
-	mv *.pdf out${i}.pdf
+	compile "$input"
+	mv ${input%.tex}.pdf out${i}.pdf
 	sumarize out${i}.pdf
-	mv *.pdf "$outputdir"
+	mv "out${i}_summary.pdf" "$outputdir"
 
-	# checkout parent  commit if exists
+	# checkout parent commit if exists
 	parent="$(git rev-list --topo-order HEAD..main | tail -1)"
 	if [ "$parent" == "" ]; then
 		break
