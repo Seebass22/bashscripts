@@ -9,7 +9,7 @@ compile(){
 }
 
 # create pdf with multiple pages per pdf page
-sumarize(){
+summarize(){
 	pdfjam --nup 3x2 "$1" --outfile "${1%.pdf}_summary.pdf" --landscape
 	rm -f "$1"
 }
@@ -30,7 +30,7 @@ while true; do
 	filename="$(printf '%03d' $i).pdf"
 	compile "$input"
 	mv ${input%.tex}.pdf $filename
-	sumarize $filename
+	summarize $filename
 	mv ${filename%.pdf}_summary.pdf "$outputdir"
 
 	# checkout parent commit if exists
