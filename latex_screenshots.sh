@@ -27,10 +27,11 @@ else
 fi
 
 while true; do
+	filename="$(printf '%03d' $i).pdf"
 	compile "$input"
-	mv ${input%.tex}.pdf out${i}.pdf
-	sumarize out${i}.pdf
-	mv "out${i}_summary.pdf" "$outputdir"
+	mv ${input%.tex}.pdf $filename
+	sumarize $filename
+	mv ${filename%.pdf}_summary.pdf "$outputdir"
 
 	# checkout parent commit if exists
 	parent="$(git rev-list --topo-order HEAD..main | tail -1)"
