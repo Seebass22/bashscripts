@@ -1,8 +1,10 @@
 #!/bin/bash
-# create a gif of the history of a latex document
-# checkout the first commit containing a compilable latex document
+# creates a gif of the history of a latex document
+# checkout the first commit containing a compilable latex document before running
 
 outputdir=summary_output
+pagelayout=4x2
+density=100
 
 compile(){
 	latexmk -pdf "$1"
@@ -10,12 +12,12 @@ compile(){
 
 # create pdf with multiple pages per pdf page
 summarize(){
-	pdfjam --nup 3x2 "$1" --outfile "${1%.pdf}_summary.pdf" --landscape
+	pdfjam --nup $pagelayout "$1" --outfile "${1%.pdf}_summary.pdf" --landscape
 	rm -f "$1"
 }
 
 convert_to_png(){
-	convert -background white -alpha remove -alpha off -density 300 "$1" ${1%.pdf}.png
+	convert -background white -alpha remove -alpha off -density $density "$1" ${1%.pdf}.png
 }
 
 i=1
