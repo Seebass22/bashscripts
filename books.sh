@@ -7,7 +7,7 @@ openbook () {
 	fi
 
 	if [ ! -z "$book" ]; then
-		zathura "$book" --fork
+		evince "$book"
 	fi
 }
 
