@@ -15,6 +15,9 @@ minutes=0
 hours=0
 
 for d in $durations; do
+	if [ "$d" = "N/A," ]; then
+		continue
+	fi
 	sec=$(echo $d | cut -d ':' -f3 | sed 's/^0*//')
 	min=$(echo $d | cut -d ':' -f2 | sed 's/^0*//')
 	hour=$(echo $d | cut -d ':' -f1 | sed 's/^0*//')
