@@ -7,7 +7,7 @@ if [ $# -eq 0 ]; then
 fi
 
 durations=$(for f in "$@"; do
-	ffprobe "$f" 2>&1 | grep Duration | awk '{print $2}' | sed 's/\..*$//'
+	ffprobe -v error -show_entries format=duration -sexagesimal -of default=noprint_wrappers=1:nokey=1 "$f" | cut -d '.' -f1
 done)
 
 seconds=0
@@ -15,7 +15,7 @@ minutes=0
 hours=0
 
 for d in $durations; do
-	if [ "$d" = "N/A," ]; then
+	if [ "$d" = "N/A" ]; then
 		continue
 	fi
 	sec=$(echo $d | cut -d ':' -f3 | sed 's/^0*//')
