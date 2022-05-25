@@ -1,4 +1,4 @@
-#~/bin/bash
+#!/bin/bash
 # create a 9:16 aspect ratio video with blurred sides
 # defaults to 1080x1920 resolution
 # scale and blur video to produce background
