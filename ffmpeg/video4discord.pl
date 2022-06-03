@@ -23,4 +23,4 @@ my $duration = `ffprobe -v error -select_streams v:0 -show_entries format=durati
 my $total_bitrate = ($target_filesize * 0.9536 * 8192) / $duration;
 my $video_bitrate = int($total_bitrate - $audio_bitrate);
 
-`ffmpeg -y -i "$input_file" -c:v libx264 -b:v ${video_bitrate}k -pass 1 -vf "scale=iw/${div}:-1" -vsync cfr -f null /dev/null && ffmpeg -y -i "$input_file" -c:v libx264 -b:v ${video_bitrate}k -pass 2 -vf "scale=iw/${div}:-1" -c:a aac -b:a 64k "$output_file"`;
+`ffmpeg -y -i "$input_file" -c:v libx264 -b:v ${video_bitrate}k -pass 1 -vf "scale=iw/${div}:-1" -vsync cfr -f null /dev/null && ffmpeg -y -i "$input_file" -c:v libx264 -b:v ${video_bitrate}k -pass 2 -vf "scale=iw/${div}:-1" -c:a libopus -b:a 32k "$output_file"`;
