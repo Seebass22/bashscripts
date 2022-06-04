@@ -8,7 +8,7 @@
 if [ -f ~/.emails ]; then
 	chosen=$(cat ~/bashscripts/.specialchars ~/.emails ~/bashscripts/.emojis | grep -v "#" |  dmenu -l 30 -fn Monospace-18)
 else
-	chosen=$(grep -v "#" ~/bashscripts/.specialchars ~/bashscripts/.emojis | dmenu -l 20 -fn Monospace-18)
+	chosen=$(grep -vh "#" ~/bashscripts/.specialchars ~/bashscripts/.emojis | dmenu -l 20 -fn Monospace-18)
 fi
 
 [ "$chosen" != "" ] || exit
