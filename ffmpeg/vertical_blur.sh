@@ -34,4 +34,4 @@ output="${POSITIONAL[1]}"
 ffmpeg -i "$input" -filter_complex "[0:v]boxblur=40,scale=${horizontal}x${vertical},
 	setsar=1[bg];[0:v]scale=${horizontal}:${vertical}:force_original_aspect_ratio=decrease[fg];\
 	[bg][fg]overlay=y=(H-h)/2"\
-	-c:a copy "$output"
+	-c:a copy -crf 18 "$output"
