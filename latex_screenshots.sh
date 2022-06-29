@@ -7,7 +7,11 @@ pagelayout=4x2
 density=100
 
 compile(){
-	latexmk -pdf "$1"
+	latexmk -pdf -halt-on-error "$1"
+	if [ $? -ne 0 ]; then
+		echo compilation failed
+		exit 1
+	fi
 }
 
 # create pdf with multiple pages per pdf page
