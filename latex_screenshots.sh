@@ -5,6 +5,7 @@
 outputdir=summary_output
 pagelayout=4x2
 density=100
+delay=100
 
 compile(){
 	latexmk -pdf -halt-on-error "$1"
@@ -49,6 +50,11 @@ while [[ $# -gt 0 ]]; do
 			shift # past argument
 			shift # past value
 			;;
+		-t|--delay)
+			delay="$2"
+			shift # past argument
+			shift # past value
+			;;
 		*)    # unknown option
 			POSITIONAL+=("$1") # save it in an array for later
 			shift # past argument
@@ -86,4 +92,4 @@ for f in *.pdf; do
 done
 
 # create final gif
-convert -delay 100 -loop 0 *.png final.gif
+convert -delay $delay -loop 0 *.png final.gif
