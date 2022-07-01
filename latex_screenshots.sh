@@ -55,6 +55,11 @@ while [[ $# -gt 0 ]]; do
 			shift # past argument
 			shift # past value
 			;;
+		-p|--pad)
+			pad_duration="$2"
+			shift # past argument
+			shift # past value
+			;;
 		*)    # unknown option
 			POSITIONAL+=("$1") # save it in an array for later
 			shift # past argument
@@ -93,3 +98,6 @@ done
 
 # create final gif
 convert -delay $delay -loop 0 *.png final.gif
+if [ -n "$pad_duration" ]; then
+	ffmpeg -i final.gif -vf tpad=stop_mode=clone:stop_duration=$pad_duration final_padded.mp4
+fi
