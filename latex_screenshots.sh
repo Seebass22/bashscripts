@@ -75,10 +75,12 @@ fi
 
 while true; do
 	filename="$(printf '%03d' $i).pdf"
-	compile "$input"
-	mv "${input%.tex}.pdf" "$filename"
-	summarize "$filename"
-	mv "${filename%.pdf}_summary.pdf" "$outputdir"
+	if [ ! -f "${outputdir}/${filename%.pdf}_summary.pdf" ]; then
+		compile "$input"
+		mv "${input%.tex}.pdf" "$filename"
+		summarize "$filename"
+		mv "${filename%.pdf}_summary.pdf" "$outputdir"
+	fi
 
 	# checkout parent commit if exists
 	parent="$(git rev-list --topo-order HEAD..main | tail -1)"
@@ -99,5 +101,5 @@ done
 # create final gif
 convert -delay $delay -loop 0 *.png final.gif
 if [ -n "$pad_duration" ]; then
-	ffmpeg -i final.gif -vf tpad=stop_mode=clone:stop_duration=$pad_duration final_padded.mp4
+	ffmpeg -y -i final.gif -vf tpad=stop_mode=clone:stop_duration=$pad_duration final_padded.mp4
 fi
