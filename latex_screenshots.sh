@@ -90,6 +90,7 @@ while true; do
 		git checkout "$parent"
 		i=$((i + 1))
 	fi
+	latexmk -C
 done
 
 # convert all to png
