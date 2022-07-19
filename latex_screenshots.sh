@@ -95,7 +95,9 @@ done
 # convert all to png
 cd "$outputdir"
 for f in *.pdf; do
-	convert_to_png "$f"
+	if [ ! -f "${f%.pdf}.png" ]; then
+		convert_to_png "$f"
+	fi
 done
 
 # create final gif
