@@ -1,7 +1,13 @@
 #!/bin/bash
+set -e
+
+filename="screenshot-$(date +%F_%T).png"
+tmp_filename="/tmp/screenshot-$(date +%F_%T).png"
+
 if [ "$1" == save ]; then
-	scrot -s
+	import "$filename"
 else
-	scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
+	import "$tmp_filename"
+	xclip -selection c -t image/png < "$tmp_filename"
 	notify-send screenshotted
 fi
